@@ -150,7 +150,8 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           tenPx,
-          Center(
+          Align(
+            alignment: const Alignment(0.0, 0.6),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

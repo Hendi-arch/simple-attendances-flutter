@@ -6,6 +6,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:simple_attendances/app/routes.dart';
 import 'package:simple_attendances/app/get_it_registry.dart';
 import 'package:simple_attendances/core/models/attendances_model.dart';
+import 'package:simple_attendances/core/models/master_location_model.dart';
 import 'package:simple_attendances/core/services/geo_service.dart';
 import 'package:simple_attendances/core/services/hive_db_service.dart';
 import 'package:simple_attendances/core/stores/user/user_store.dart';
@@ -34,6 +35,8 @@ abstract class _HomeStoreBase with Store, NavigatorMixin {
 
     if (result) {
       userStore.signOut();
+      HiveDbService.getBox<MasterLocationModel>(HiveDbService.constLocationsBox).clear();
+      HiveDbService.getBox<AttendancesModel>(HiveDbService.constAttendancesBox).clear();
       removeCurrentAndGoNamed(route: Routes.signIn);
     }
   }

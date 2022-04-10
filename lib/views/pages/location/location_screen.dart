@@ -5,6 +5,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:simple_attendances/core/utility/enums.dart';
 import 'package:simple_attendances/core/utility/fun_utils.dart';
 import 'package:simple_attendances/core/utility/navigator_utils.dart';
+import 'package:simple_attendances/views/helpers/gap.dart';
 import 'package:simple_attendances/views/widgets/custom_text_widget.dart';
 import 'package:simple_attendances/core/models/master_location_model.dart';
 import 'package:simple_attendances/core/stores/location/location_store.dart';
@@ -81,7 +82,9 @@ class _LocationScreenState extends State<LocationScreen> with NavigatorMixin {
             children: [
               // Google map.
               GoogleMap(
+                mapToolbarEnabled: true,
                 myLocationEnabled: true,
+                zoomControlsEnabled: false,
                 onMapCreated: _onMapCreated,
                 mapType: _locationStore.mapType,
                 initialCameraPosition: _locationStore.initialPosition!,
@@ -170,7 +173,7 @@ class _LocationScreenState extends State<LocationScreen> with NavigatorMixin {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     CustomTextWidget(
-                      fontSize: 20,
+                      fontSize: 15,
                       text: "Pin Pointed Locations",
                       textStyle: TextStyle(
                         fontWeight: FontWeight.bold,
@@ -184,11 +187,8 @@ class _LocationScreenState extends State<LocationScreen> with NavigatorMixin {
                         decoration: TextDecoration.underline,
                       ),
                     ),
-                    // Map Type
-                    const SizedBox(width: 10),
-                    // Create Dropdown button.
+                    tenPx,
                     Container(
-                      // Neuromorphic button.
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(5),
@@ -202,12 +202,12 @@ class _LocationScreenState extends State<LocationScreen> with NavigatorMixin {
                       ),
                       padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: DropdownButton<MapType>(
-                        iconSize: 24,
+                        iconSize: 20,
                         elevation: 16,
                         value: _locationStore.mapType,
                         icon: const Icon(Icons.map),
                         style: const TextStyle(
-                          fontSize: 20,
+                          fontSize: 15,
                           color: Colors.black,
                           fontWeight: FontWeight.w600,
                         ),

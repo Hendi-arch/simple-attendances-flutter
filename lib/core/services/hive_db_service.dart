@@ -19,9 +19,10 @@ class HiveDbService {
   }
 
   static const String constAttendancesBox = "attendances";
-  static const String constAttend = "attend";
   static const String constLocationsBox = "locations";
   static const String constUserBox = "user";
+  
+  static const String constAttend = "attend";
   static const String constUsername = "username";
   static const String constUserLocale = "locale";
   static const String constCurrentPinLocation = "currentPinLocation";
