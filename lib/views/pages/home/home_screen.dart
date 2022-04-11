@@ -18,14 +18,18 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final _size = MediaQuery.of(context).size;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home'),
+        centerTitle: true,
       ),
-      body: Stack(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Align(
-            alignment: Alignment.topCenter,
+          Expanded(
+            flex: 2,
             child: Padding(
               padding: const EdgeInsets.only(top: 20),
               child: Column(
@@ -149,34 +153,52 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
-          tenPx,
-          Align(
-            alignment: const Alignment(0.0, 0.6),
+          Expanded(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ElevatedButton(
-                  child: const Text('Add Attendance'),
+                _buildButton(
+                  size: _size,
                   onPressed: () => homeStore.addAttendances(context),
+                  text: 'Add Attendance',
+                  color: Colors.blue,
                 ),
-                ElevatedButton(
-                  child: const Text('Set Pin Location'),
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
-                  ),
+                _buildButton(
+                  size: _size,
                   onPressed: () => homeStore.goToLocationScreen(context),
+                  text: 'Set Pin Location',
+                  color: Colors.green,
                 ),
-                ElevatedButton(
-                  child: const Text('Sign Out'),
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
-                  ),
+                _buildButton(
+                  size: _size,
                   onPressed: () => homeStore.signOut(context),
-                )
+                  text: 'Sign Out',
+                  color: Colors.red,
+                ),
               ],
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildButton({
+    required Size size,
+    required Function() onPressed,
+    required String text,
+    required Color color,
+  }) {
+    return SizedBox(
+      width: size.width * 0.8,
+      child: ElevatedButton(
+        child: Text(text),
+        style: ButtonStyle(
+          elevation: MaterialStateProperty.all<double>(8),
+          backgroundColor: MaterialStateProperty.all<Color>(color),
+          shadowColor: MaterialStateProperty.all<Color>(Colors.black),
+          shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+        ),
+        onPressed: onPressed,
       ),
     );
   }

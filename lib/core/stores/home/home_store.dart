@@ -10,7 +10,6 @@ import 'package:simple_attendances/core/models/master_location_model.dart';
 import 'package:simple_attendances/core/services/geo_service.dart';
 import 'package:simple_attendances/core/services/hive_db_service.dart';
 import 'package:simple_attendances/core/stores/user/user_store.dart';
-import 'package:simple_attendances/core/utility/enums.dart';
 import 'package:simple_attendances/views/helpers/dialog_helper.dart';
 import 'package:simple_attendances/core/utility/navigator_utils.dart';
 import 'package:simple_attendances/core/extensions/logger_extension.dart';

@@ -23,6 +23,7 @@ class _SignInScreenState extends State<SignInScreen> {
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Sign In'),
+          centerTitle: true,
         ),
         body: Center(
           child: Form(

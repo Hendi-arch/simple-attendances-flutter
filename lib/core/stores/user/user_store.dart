@@ -58,5 +58,6 @@ abstract class _UserStoreBase with Store, NavigatorMixin {
 
   void signOut() {
     _userBox?.delete(HiveDbService.constUsername);
+    _userBox?.delete(HiveDbService.constCurrentPinLocation);
   }
 }
